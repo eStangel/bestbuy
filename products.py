@@ -1,8 +1,4 @@
 class Product:
-    name: str
-    price: float
-    quantity: int
-    active: bool
 
     def __init__(self, name: str, price: float, quantity: int):
         if not name:
@@ -12,16 +8,18 @@ class Product:
         if quantity < 0:
             raise ValueError("Quantity cannot be negative!")
 
-        self.name = name
-        self.price = price
-        self.quantity = quantity
-        self.active = True
+        self.name: str = name
+        self.price: float = price
+        self.quantity: int = quantity
+        self.active: bool = True
 
     def get_quantity(self) -> int:
         return self.quantity
 
-    def set_quantity(self, quantity):
-        self.quantity = self.quantity + quantity
+    def set_quantity(self, amount: int):
+        if self.quantity + amount < 0:
+            raise ValueError("Quantity cannot be negative!")
+        self.quantity += amount
         if self.quantity == 0:
             self.deactivate()
 
@@ -37,8 +35,8 @@ class Product:
     def show(self):
         print(f"{self.name}, Price: {self.price}, Quantity: {self.quantity}")
 
-    def buy(self, quantity) -> float:
-        if self.quantity < quantity:
+    def buy(self, amount: int) -> float:
+        if self.quantity < amount:
             raise ValueError("Not enough units available!")
-        self.set_quantity(-quantity)
-        return self.price * quantity
+        self.set_quantity(-amount)
+        return self.price * amount
