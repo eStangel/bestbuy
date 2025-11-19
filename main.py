@@ -11,6 +11,7 @@ best_buy = store.Store(product_list)
 
 
 def list_products(best_buy):
+    """Prints all product names, their price and quantity."""
     items = best_buy.get_all_products()
     if items:
         for i in range(len(items)):
@@ -23,11 +24,17 @@ def list_products(best_buy):
 
 
 def get_total_amount(best_buy):
+    """Prints the added amount of items of all products."""
     total_amount = best_buy.get_total_quantity()
     print(f"Total of {total_amount} items in store")
 
 
 def get_order(best_buy):
+    """
+    Creates an order of the products in the quantity selected by the user.
+    Checks if the chosen amount is in stock and notifies user if not.
+    Returns the added costs of all ordered products.
+    """
     print("------")
     list_products(best_buy)
     print("------\n"

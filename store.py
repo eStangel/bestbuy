@@ -2,6 +2,10 @@ from products import Product
 
 
 class Store:
+    """
+    Represents a store and provides methods for making an inventory of its
+    products and handling orders.
+    """
 
     def __init__(self, product_list: list):
         if not product_list:

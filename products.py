@@ -1,4 +1,5 @@
 class Product:
+    """Represents a product in a store with price and quantity."""
 
     def __init__(self, name: str, price: float, quantity: int):
         if not name:
