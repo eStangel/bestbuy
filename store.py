@@ -8,14 +8,20 @@ class Store:
     """
 
     def __init__(self, product_list: list):
+        if not isinstance(product_list, list):
+            raise TypeError("Product list must be a list!")
         if not product_list:
             raise ValueError("Products must contain at least one item!")
         self.products = product_list
 
-    def add_product(self, product):
+    def add_product(self, product: Product):
+        if not isinstance(product, Product):
+            raise TypeError("Product must be an instance of class Product!")
         self.products.append(product)
 
-    def remove_product(self, product):
+    def remove_product(self, product: Product):
+        if not isinstance(product, Product):
+            raise TypeError("Product must be an instance of class Product!")
         self.products.remove(product)
 
     def get_total_quantity(self) -> int:
